@@ -1,3 +1,4 @@
+# This program is for tesing purposes and connection to prismatic
 import time
 import board
 import neopixel
@@ -26,18 +27,23 @@ pixels = neopixel.NeoPixel(
 import socket
 import time
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# enter the ip and socket of the prismatik server
 client.connect(('192.168.8.211', 3636))
 
 from_server = client.recv(4096)
 # client.close()
 print(from_server)
 
+# clear the LEDs
 pixels.fill((0, 0, 0))
 pixels.show()
 while True:
+#     ask server for pixel colors
     client.send(bytearray("getcolors\n".encode()))
     from_server = client.recv(4096)
     
+#     convert th incoming colors into usable tuples to pass to pixels
     color_string = from_server.decode("utf-8")[7:-3]
     colors = color_string.split(';')
     for item in range(len(colors)):
