@@ -11,3 +11,4 @@ Use Raspberry Pi with addressable LEDs
 Notes:
 https://www.youtube.com/watch?v=rA9d8ZJwkj4
 https://github.com/dmadison/Adalight-FastLED
+https://github.com/FastLED/FastLED
